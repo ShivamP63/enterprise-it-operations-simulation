@@ -1,0 +1,5 @@
+$kind: collection
+description: Safe portfolio simulation for INC0010002. It demonstrates health checking, reproduction of HTTP 401, and verification of HTTP 200 without using production credentials.
+variables:
+  baseUrl: https://postman-echo.com
+  incidentNumber: INC0010002

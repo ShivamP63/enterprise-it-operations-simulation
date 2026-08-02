@@ -1,0 +1,16 @@
+$kind: http-request
+url: "{{baseUrl}}/get?resource=inventory&result=authorized"
+method: GET
+headers:
+  X-Simulation-State: fresh-session
+  X-Incident-Number: "{{incidentNumber}}"
+queryParams:
+  resource: inventory
+  result: authorized
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test('Remediated request returns HTTP 200', function () { pm.response.to.have.status(200); });
+      pm.test('Response confirms authorized simulation', function () { var json = pm.response.json(); pm.expect(json.args.result).to.eql('authorized'); });
+    language: text/javascript
+order: 3000

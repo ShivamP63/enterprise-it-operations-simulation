@@ -1,0 +1,13 @@
+$kind: http-request
+description: Uses Postman Echo to reproduce the expected HTTP 401 symptom safely.
+url: "{{baseUrl}}/status/401"
+method: GET
+headers:
+  X-Incident-Number: "{{incidentNumber}}"
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test('Unauthorized path returns HTTP 401', function () { pm.response.to.have.status(401); });
+      pm.test('No token is written to the console', function () { pm.expect(pm.request.headers.has('Authorization')).to.eql(false); });
+    language: text/javascript
+order: 2000

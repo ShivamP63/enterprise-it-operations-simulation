@@ -1,0 +1,6 @@
+name: Local Simulation
+values:
+  - key: baseUrl
+    value: 'https://postman-echo.com'
+  - key: incidentNumber
+    value: INC0010002
