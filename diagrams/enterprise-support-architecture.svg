@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="760" viewBox="0 0 1400 760" role="img" aria-labelledby="title desc">
+  <title id="title">Enterprise application support incident architecture</title>
+  <desc id="desc">User authentication and API path with ServiceNow, PowerShell, Postman, Jira, and Confluence support workflow.</desc>
+  <rect width="1400" height="760" fill="#ffffff"/>
+  <style>
+    .box{fill:#f7f9fb;stroke:#263238;stroke-width:2;rx:18}.support{fill:#eef6ff;stroke:#1e5aa8;stroke-width:2;rx:18}.failure{fill:#fff2f2;stroke:#b42318;stroke-width:3;rx:18}.t{font:600 24px Arial,sans-serif;fill:#172b4d}.s{font:18px Arial,sans-serif;fill:#344563}.h{font:700 34px Arial,sans-serif;fill:#172b4d}.arrow{stroke:#44546f;stroke-width:3;fill:none;marker-end:url(#m)}.dash{stroke:#1e5aa8;stroke-width:3;stroke-dasharray:10 8;fill:none;marker-end:url(#mb)}
+  </style>
+  <defs>
+    <marker id="m" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0,0 L12,6 L0,12 z" fill="#44546f"/></marker>
+    <marker id="mb" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0,0 L12,6 L0,12 z" fill="#1e5aa8"/></marker>
+  </defs>
+  <text x="700" y="55" text-anchor="middle" class="h">Enterprise Application Support Incident Flow</text>
+
+  <rect x="70" y="140" width="230" height="120" class="box"/><text x="185" y="190" text-anchor="middle" class="t">Employee</text><text x="185" y="225" text-anchor="middle" class="s">Browser / API client</text>
+  <rect x="370" y="140" width="260" height="120" class="box"/><text x="500" y="190" text-anchor="middle" class="t">Microsoft Entra ID</text><text x="500" y="225" text-anchor="middle" class="s">Authentication and token</text>
+  <rect x="700" y="125" width="300" height="150" class="failure"/><text x="850" y="180" text-anchor="middle" class="t">Inventory API</text><text x="850" y="215" text-anchor="middle" class="s">Authentication middleware</text><text x="850" y="245" text-anchor="middle" class="s">Failure: stale session cache</text>
+  <rect x="1070" y="140" width="250" height="120" class="box"/><text x="1195" y="190" text-anchor="middle" class="t">Inventory Store</text><text x="1195" y="225" text-anchor="middle" class="s">Application data</text>
+
+  <path d="M300 200 H370" class="arrow"/><text x="335" y="185" text-anchor="middle" class="s">1</text>
+  <path d="M630 200 H700" class="arrow"/><text x="665" y="185" text-anchor="middle" class="s">2</text>
+  <path d="M1000 200 H1070" class="arrow"/><text x="1035" y="185" text-anchor="middle" class="s">3</text>
+
+  <text x="700" y="345" text-anchor="middle" class="t">Operational support workflow</text>
+  <rect x="60" y="410" width="230" height="120" class="support"/><text x="175" y="460" text-anchor="middle" class="t">ServiceNow</text><text x="175" y="495" text-anchor="middle" class="s">INC0010002</text>
+  <rect x="335" y="410" width="230" height="120" class="support"/><text x="450" y="455" text-anchor="middle" class="t">PowerShell</text><text x="450" y="490" text-anchor="middle" class="s">DNS / TCP / HTTP</text>
+  <rect x="610" y="410" width="230" height="120" class="support"/><text x="725" y="455" text-anchor="middle" class="t">Postman</text><text x="725" y="490" text-anchor="middle" class="s">401 reproduction / 200 test</text>
+  <rect x="885" y="410" width="200" height="120" class="support"/><text x="985" y="455" text-anchor="middle" class="t">Jira</text><text x="985" y="490" text-anchor="middle" class="s">CRT-1</text>
+  <rect x="1130" y="410" width="210" height="120" class="support"/><text x="1235" y="455" text-anchor="middle" class="t">Confluence</text><text x="1235" y="490" text-anchor="middle" class="s">KB-001</text>
+
+  <path d="M290 470 H335" class="dash"/><path d="M565 470 H610" class="dash"/><path d="M840 470 H885" class="dash"/><path d="M1085 470 H1130" class="dash"/>
+  <path d="M725 410 C725 350 800 330 835 275" class="dash"/>
+
+  <rect x="300" y="620" width="800" height="80" fill="#f4f5f7" stroke="#6b778c" stroke-width="2" rx="16"/>
+  <text x="700" y="655" text-anchor="middle" class="t">Resolution and verification</text>
+  <text x="700" y="685" text-anchor="middle" class="s">Invalidate stale session → acquire fresh token → verify HTTP 200 → update KB → close incident</text>
+</svg>

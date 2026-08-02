@@ -1,0 +1,100 @@
+{
+  "info": {
+    "_postman_id": "5d8f0c39-88a1-4b7a-bf04-10e7dd221a40",
+    "name": "Inventory API Support Tests",
+    "description": "Safe portfolio simulation for INC0010002. It demonstrates health checking, reproduction of HTTP 401, and verification of HTTP 200 without using production credentials.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "01 - Health check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/get?service=inventory-api&incident={{incidentNumber}}",
+          "host": ["{{baseUrl}}"],
+          "path": ["get"],
+          "query": [
+            {"key": "service", "value": "inventory-api"},
+            {"key": "incident", "value": "{{incidentNumber}}"}
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('Health endpoint returns HTTP 200', function () { pm.response.to.have.status(200); });",
+              "pm.test('Response time is below 2 seconds', function () { pm.expect(pm.response.responseTime).to.be.below(2000); });"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "02 - Reproduce unauthorized request",
+      "request": {
+        "method": "GET",
+        "header": [
+          {"key": "X-Incident-Number", "value": "{{incidentNumber}}", "type": "text"}
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/status/401",
+          "host": ["{{baseUrl}}"],
+          "path": ["status", "401"]
+        },
+        "description": "Uses Postman Echo to reproduce the expected HTTP 401 symptom safely."
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('Unauthorized path returns HTTP 401', function () { pm.response.to.have.status(401); });",
+              "pm.test('No token is written to the console', function () { pm.expect(pm.request.headers.has('Authorization')).to.eql(false); });"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "03 - Verify access after remediation",
+      "request": {
+        "method": "GET",
+        "header": [
+          {"key": "X-Simulation-State", "value": "fresh-session", "type": "text"},
+          {"key": "X-Incident-Number", "value": "{{incidentNumber}}", "type": "text"}
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/get?resource=inventory&result=authorized",
+          "host": ["{{baseUrl}}"],
+          "path": ["get"],
+          "query": [
+            {"key": "resource", "value": "inventory"},
+            {"key": "result", "value": "authorized"}
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('Remediated request returns HTTP 200', function () { pm.response.to.have.status(200); });",
+              "pm.test('Response confirms authorized simulation', function () { var json = pm.response.json(); pm.expect(json.args.result).to.eql('authorized'); });"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {"key": "baseUrl", "value": "https://postman-echo.com"},
+    {"key": "incidentNumber", "value": "INC0010002"}
+  ]
+}
