@@ -1,0 +1,9 @@
+﻿
+Name             Succeeded Details                        DurationMs Timestamp                   
+----             --------- -------                        ---------- ---------                   
+DNS resolution        True 162.159.142.41                         40 2026-08-02T20:35:36.9963268Z
+TCP connectivity      True postman-echo.com:443 reachable         36 2026-08-02T20:35:37.0520754Z
+HTTP endpoint         True HTTP 200                              200 2026-08-02T20:35:37.2589547Z
+
+
+

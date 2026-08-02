@@ -1,5 +1,9 @@
-# Diagnostic output generated locally
-diagnostic-output/
+# Locally generated diagnostic evidence
+/diagnostic-output/
+/powershell/diagnostic-output/inventory-api-diagnostics-*.json
+/powershell/diagnostic-output/inventory-api-diagnostics-*.txt
+!powershell/diagnostic-output/sample-inventory-api-diagnostics.json
+!powershell/diagnostic-output/sample-inventory-api-diagnostics.txt
 *.log
 
 # Operating-system files

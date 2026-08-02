@@ -1,0 +1,31 @@
+{
+    "Incident":  "INC0010002",
+    "ApiBaseUrl":  "https://postman-echo.com",
+    "ComputerName":  "PORTFOLIO-DEVICE",
+    "PowerShell":  "5.1.26100.8875",
+    "GeneratedAtUtc":  "2026-08-02T20:35:37.2851045Z",
+    "Checks":  [
+                   {
+                       "Name":  "DNS resolution",
+                       "Succeeded":  true,
+                       "Details":  "162.159.142.41",
+                       "DurationMs":  40,
+                       "Timestamp":  "2026-08-02T20:35:36.9963268Z"
+                   },
+                   {
+                       "Name":  "TCP connectivity",
+                       "Succeeded":  true,
+                       "Details":  "postman-echo.com:443 reachable",
+                       "DurationMs":  36,
+                       "Timestamp":  "2026-08-02T20:35:37.0520754Z"
+                   },
+                   {
+                       "Name":  "HTTP endpoint",
+                       "Succeeded":  true,
+                       "Details":  "HTTP 200",
+                       "DurationMs":  200,
+                       "Timestamp":  "2026-08-02T20:35:37.2589547Z"
+                   }
+               ],
+    "Note":  "No authentication token or secret is collected by this script."
+}
