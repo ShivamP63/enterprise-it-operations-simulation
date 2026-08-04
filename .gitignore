@@ -13,3 +13,9 @@ Thumbs.db
 # Editor files
 .vscode/
 .idea/
+
+# .NET build output
+**/bin/
+**/obj/
+*.user
+*.suo
